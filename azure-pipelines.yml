@@ -9,23 +9,8 @@ resources:
 - repo: self
 
 variables:
-
-  # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '36a19b79-1aab-4594-8dc3-dfda8383456d'
-  imageRepository: 'dockersamplenginx'
-  containerRegistry: 'demo1555.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
-  tag: '$(Build.BuildId)'
-  imagePullSecret: 'demo15551478cc91-auth'
-
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
-
-  # Azure Service connection
-  azureConnection: '73edf893-eb36-4b6b-9e06-c66287432ed1'
-
-  # Name of the new namespace being created to deploy the PR changes.
-  k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
 
 stages:
 - stage: Deploy
@@ -39,8 +24,8 @@ stages:
     - task: KubernetesManifest@0
       displayName: Deploy
       inputs:
-        kubernetesServiceConnection: k8s-demo
-        namespace: test2
+        kubernetesServiceConnection: k8s-demo11
+        namespace: test
         manifests: |
           ubuntu.yaml
           nginx.yaml
