@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ubuntu-deployment
+  name: busybox-deployment
 spec:
   selector:
     matchLabels:
-      app: ubuntu
+      app: busybox
   replicas: 1
   template:
     metadata:
       labels:
-        app: ubuntu
+        app: busybox
     spec:
       containers:
-      - name: ubuntu
-        image: ubuntu
+      - name: busybox
+        image: busybox
         command:
           - sleep
           - "3600"
